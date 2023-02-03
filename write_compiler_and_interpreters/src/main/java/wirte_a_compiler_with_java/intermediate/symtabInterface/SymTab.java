@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * @create 2023/1/26 12:27 PM
  */
 public interface SymTab {
+    // 嵌套级别
     public int getNestingLevel();
     public SymTabEntry enter(String name);
     public SymTabEntry lookup(String name);

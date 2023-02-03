@@ -9,6 +9,8 @@ import wirte_a_compiler_with_java.front_end.token.Token;
 
 import wirte_a_compiler_with_java.front_end.inter.ICode;
 import wirte_a_compiler_with_java.intermediate.symtabInterface.SymTab;
+import wirte_a_compiler_with_java.intermediate.symtabInterface.SymTabStack;
+import wirte_a_compiler_with_java.intermediate.symtabimpl.SymTabFactory;
 
 
 /**
@@ -17,11 +19,13 @@ import wirte_a_compiler_with_java.intermediate.symtabInterface.SymTab;
  */
 public abstract class Parser implements MessageProducer {
     protected static SymTab symTab;
+    protected static SymTabStack symTabStack;
     protected static MessageHandler messageHandler;
     protected Scanner scanner;
     protected ICode iCode; // 中间代码生成
 
     static {
+        symTabStack = SymTabFactory.createSymTabStack();
         symTab = null;
         messageHandler = new MessageHandler();
     }
