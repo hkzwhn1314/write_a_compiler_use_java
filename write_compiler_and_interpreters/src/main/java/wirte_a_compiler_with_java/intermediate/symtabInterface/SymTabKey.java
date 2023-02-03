@@ -1,4 +1,4 @@
-package wirte_a_compiler_with_java.front_end.inter;
+package wirte_a_compiler_with_java.intermediate.symtabInterface;
 
 /**
  * @Author zhaocenliu
