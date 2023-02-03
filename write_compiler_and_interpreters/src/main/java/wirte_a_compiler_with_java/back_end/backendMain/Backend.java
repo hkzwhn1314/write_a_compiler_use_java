@@ -3,7 +3,8 @@ package wirte_a_compiler_with_java.back_end.backendMain;
 import wirte_a_compiler_with_java.front_end.Message.MessageHandler;
 import wirte_a_compiler_with_java.front_end.inter.ICode;
 import wirte_a_compiler_with_java.front_end.inter.MessageProducer;
-import wirte_a_compiler_with_java.front_end.inter.SymTab;
+import wirte_a_compiler_with_java.intermediate.symtabInterface.SymTab;
+
 
 /**
  * @Author zhaocenliu

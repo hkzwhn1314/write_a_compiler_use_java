@@ -4,7 +4,8 @@ import wirte_a_compiler_with_java.back_end.backendMain.Backend;
 import wirte_a_compiler_with_java.front_end.Message.Message;
 import wirte_a_compiler_with_java.front_end.inter.ICode;
 import wirte_a_compiler_with_java.front_end.inter.MessageListener;
-import wirte_a_compiler_with_java.front_end.inter.SymTab;
+import wirte_a_compiler_with_java.intermediate.symtabInterface.SymTab;
+
 
 import static wirte_a_compiler_with_java.front_end.Message.MessageType.COMPILER_SUMMARY;
 

@@ -8,9 +8,9 @@ import java.util.ArrayList;
  */
 public interface SymTabEntry {
     public String getName();
-    public wirte_a_compiler_with_java.intermediate.symtabInterface.SymTab getSymTab();
+    public SymTab getSymTab();
     public void appendLineNumber(int lineNumber);
     public ArrayList<Integer> getLineNumbers();
-    public void setAttribute(wirte_a_compiler_with_java.intermediate.symtabInterface.SymTabKey key, Object value);
-    public Object getAttribute(wirte_a_compiler_with_java.intermediate.symtabInterface.SymTabKey key);
+    public void setAttribute(SymTabKey key, Object value);
+    public Object getAttribute(SymTabKey key);
 }

@@ -10,8 +10,10 @@ import wirte_a_compiler_with_java.front_end.Parse.Source;
 import wirte_a_compiler_with_java.front_end.factory.FrontendFactory;
 import wirte_a_compiler_with_java.front_end.inter.ICode;
 import wirte_a_compiler_with_java.front_end.inter.MessageListener;
-import wirte_a_compiler_with_java.front_end.inter.SymTab;
+
 import wirte_a_compiler_with_java.front_end.inter.TokenType;
+import wirte_a_compiler_with_java.intermediate.symtabInterface.SymTab;
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;

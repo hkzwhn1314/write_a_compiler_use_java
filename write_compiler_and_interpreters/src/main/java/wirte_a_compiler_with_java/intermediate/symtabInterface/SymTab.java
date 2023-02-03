@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public interface SymTab {
     public int getNestingLevel();
-    public wirte_a_compiler_with_java.intermediate.symtabInterface.SymTabEntry enter(String name);
-    public wirte_a_compiler_with_java.intermediate.symtabInterface.SymTabEntry lookup(String name);
-    public ArrayList<wirte_a_compiler_with_java.intermediate.symtabInterface.SymTabEntry> sortedEntries();
+    public SymTabEntry enter(String name);
+    public SymTabEntry lookup(String name);
+    public ArrayList<SymTabEntry> sortedEntries();
 }
