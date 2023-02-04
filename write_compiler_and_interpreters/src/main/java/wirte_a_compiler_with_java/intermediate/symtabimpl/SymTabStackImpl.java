@@ -16,6 +16,7 @@ public class SymTabStackImpl extends ArrayList<SymTab> implements SymTabStack {
     private int currentNestingLevel;
 
     public SymTabStackImpl() {
+        // is always = zero
         this.currentNestingLevel = 0;
         add(SymTabFactory.createSymTab(currentNestingLevel));
     }

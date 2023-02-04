@@ -13,6 +13,8 @@ import wirte_a_compiler_with_java.front_end.inter.MessageListener;
 
 import wirte_a_compiler_with_java.front_end.inter.TokenType;
 import wirte_a_compiler_with_java.intermediate.symtabInterface.SymTab;
+import wirte_a_compiler_with_java.intermediate.symtabInterface.SymTabStack;
+import wirte_a_compiler_with_java.util.CrossReferencer;
 
 
 import java.io.BufferedReader;
@@ -30,6 +32,7 @@ public class Pascal {
     private ICode iCode; // generated intermediate code
     private SymTab symTab; // generated symbol table
     private Backend backend; // backend
+    private SymTabStack symTabStack;
 
     public Pascal(String operation, String filePath, String flags) {
         try {
@@ -45,7 +48,16 @@ public class Pascal {
             source.close();
             iCode = parser.getICode();
             symTab = parser.getSymTab();
+
+
+            symTabStack = parser.getSymTabStack();
+            if (xref) {
+                CrossReferencer crossReferencer = new CrossReferencer();
+                crossReferencer.print(symTabStack);
+            }
             backend.process(iCode, symTab);
+
+
         } catch (Exception ex) {
             System.out.println("***** Internal translator error. *****");
             ex.printStackTrace();
@@ -193,46 +205,46 @@ public class Pascal {
         }
     }
 
-        private static final String INTERPRETER_SUMMARY_FORMAT =
-                "\n%,20d statements executed." +
-                        "\n%,20d runtime errors." +
-                        "\n%,20.2f seconds total execution time.\n";
-        private static final String COMPILER_SUMMARY_FORMAT =
-                "\n%,20d instructions generated." +
-                        "\n%,20.2f seconds total code generation time.\n";
+    private static final String INTERPRETER_SUMMARY_FORMAT =
+            "\n%,20d statements executed." +
+                    "\n%,20d runtime errors." +
+                    "\n%,20.2f seconds total execution time.\n";
+    private static final String COMPILER_SUMMARY_FORMAT =
+            "\n%,20d instructions generated." +
+                    "\n%,20.2f seconds total code generation time.\n";
 
+    /**
+     * Listener for back end messages.
+     */
+    private class BackendMessageListener implements MessageListener {
         /**
-         * Listener for back end messages.
+         * Called by the back end whenever it produces a message.
+         *
+         * @param message the message.
          */
-        private class BackendMessageListener implements MessageListener {
-            /**
-             * Called by the back end whenever it produces a message.
-             *
-             * @param message the message.
-             */
-            public void messageReceived(Message message) {
-                MessageType type = message.getType();
-                switch (type) {
-                    case INTERPRETER_SUMMARY: {
-                        Number body[] = (Number[]) message.getBody();
-                        int executionCount = (Integer) body[0];
-                        int runtimeErrors = (Integer) body[1];
-                        float elapsedTime = (Float) body[2];
-                        System.out.printf(INTERPRETER_SUMMARY_FORMAT,
-                                executionCount, runtimeErrors,
-                                elapsedTime);
-                        break;
-                    }
-                    case COMPILER_SUMMARY: {
-                        Number body[] = (Number[]) message.getBody();
-                        int instructionCount = (Integer) body[0];
-                        float elapsedTime = (Float) body[1];
-                        System.out.printf(COMPILER_SUMMARY_FORMAT,
-                                instructionCount, elapsedTime);
-                        break;
-                    }
+        public void messageReceived(Message message) {
+            MessageType type = message.getType();
+            switch (type) {
+                case INTERPRETER_SUMMARY: {
+                    Number body[] = (Number[]) message.getBody();
+                    int executionCount = (Integer) body[0];
+                    int runtimeErrors = (Integer) body[1];
+                    float elapsedTime = (Float) body[2];
+                    System.out.printf(INTERPRETER_SUMMARY_FORMAT,
+                            executionCount, runtimeErrors,
+                            elapsedTime);
+                    break;
+                }
+                case COMPILER_SUMMARY: {
+                    Number body[] = (Number[]) message.getBody();
+                    int instructionCount = (Integer) body[0];
+                    float elapsedTime = (Float) body[1];
+                    System.out.printf(COMPILER_SUMMARY_FORMAT,
+                            instructionCount, elapsedTime);
+                    break;
                 }
             }
         }
     }
+}
 

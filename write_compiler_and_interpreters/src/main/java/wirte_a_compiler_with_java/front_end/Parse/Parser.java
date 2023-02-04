@@ -76,4 +76,8 @@ public abstract class Parser implements MessageProducer {
     public Token nextToken() throws Exception {
         return scanner.nextToken();
     }
+
+    public SymTabStack getSymTabStack() {
+        return symTabStack;
+    }
 }

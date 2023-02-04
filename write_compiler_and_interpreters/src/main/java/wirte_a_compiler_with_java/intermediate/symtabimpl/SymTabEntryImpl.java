@@ -11,6 +11,8 @@ import java.util.HashMap;
  * @Author zhaocenliu
  * @create 2023/2/3 3:38 PM
  */
+
+// 存储各种属性HashMap
 public class SymTabEntryImpl extends HashMap<SymTabKey, Object> implements SymTabEntry {
     private String name; // entry name
     private SymTab symTab; // parent symbol table
