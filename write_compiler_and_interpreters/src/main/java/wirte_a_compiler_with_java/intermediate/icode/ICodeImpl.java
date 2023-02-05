@@ -5,9 +5,11 @@ package wirte_a_compiler_with_java.intermediate.icode;
  * @create 2023/2/5 12:09 PM
  */
 public class ICodeImpl implements ICode{
+    private ICodeNode root;
     @Override
     public ICodeNode setRoot(ICodeNode node) {
-        return null;
+        root =  node;
+        return node;
     }
 
     @Override

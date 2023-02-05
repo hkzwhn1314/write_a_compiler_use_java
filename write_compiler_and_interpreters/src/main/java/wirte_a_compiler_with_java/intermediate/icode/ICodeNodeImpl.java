@@ -1,7 +1,6 @@
 package wirte_a_compiler_with_java.intermediate.icode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @Author zhaocenliu
@@ -30,7 +29,11 @@ public class ICodeNodeImpl extends HashMap<ICodeKey, Object> implements ICodeNod
 
     @Override
     public ICodeNode addChild(ICodeNode node) {
-        return null;
+        if (node != null) {
+            children.add(node);
+            ((ICodeNodeImpl) node).parent = this;
+        }
+        return node;
     }
 
     @Override
@@ -40,16 +43,30 @@ public class ICodeNodeImpl extends HashMap<ICodeKey, Object> implements ICodeNod
 
     @Override
     public void setAttribute(ICodeKey key, Object value) {
-
+        put(key, value);
     }
 
     @Override
     public Object getAttribute(ICodeKey key) {
-        return null;
+        return get(key);
     }
 
     @Override
     public ICodeNode copy() {
-        return null;
+        // Create a copy with the same type.
+        ICodeNodeImpl copy = (ICodeNodeImpl) ICodeFactory.createICodeNode(type);
+        Set<Entry<ICodeKey, Object>> attributes = entrySet();
+        Iterator<Entry<ICodeKey, Object>> it = attributes.iterator();
+        // Copy attributes
+        while (it.hasNext()) {
+            Map.Entry<ICodeKey, Object> attribute = it.next();
+            copy.put(attribute.getKey(), attribute.getValue());
+        }
+        return copy;
+    }
+
+    @Override
+    public String toString() {
+        return type.toString();
     }
 }
