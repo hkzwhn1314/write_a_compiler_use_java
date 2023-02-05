@@ -8,7 +8,7 @@ import wirte_a_compiler_with_java.front_end.Message.MessageType;
 import wirte_a_compiler_with_java.front_end.Parse.Parser;
 import wirte_a_compiler_with_java.front_end.Parse.Source;
 import wirte_a_compiler_with_java.front_end.factory.FrontendFactory;
-import wirte_a_compiler_with_java.front_end.inter.ICode;
+import wirte_a_compiler_with_java.intermediate.icode.ICode;
 import wirte_a_compiler_with_java.front_end.inter.MessageListener;
 
 import wirte_a_compiler_with_java.front_end.inter.TokenType;

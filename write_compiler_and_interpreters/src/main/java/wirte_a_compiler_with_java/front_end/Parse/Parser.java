@@ -7,7 +7,7 @@ import wirte_a_compiler_with_java.front_end.inter.MessageListener;
 import wirte_a_compiler_with_java.front_end.inter.MessageProducer;
 import wirte_a_compiler_with_java.front_end.token.Token;
 
-import wirte_a_compiler_with_java.front_end.inter.ICode;
+import wirte_a_compiler_with_java.intermediate.icode.ICode;
 import wirte_a_compiler_with_java.intermediate.symtabInterface.SymTab;
 import wirte_a_compiler_with_java.intermediate.symtabInterface.SymTabStack;
 import wirte_a_compiler_with_java.intermediate.symtabimpl.SymTabFactory;
