@@ -38,4 +38,7 @@ public class PascalErrorHandler {
         System.exit(errorCode.getStatus());
     }
 
+    public static int getErrorCount() {
+        return errorCount;
+    }
 }
