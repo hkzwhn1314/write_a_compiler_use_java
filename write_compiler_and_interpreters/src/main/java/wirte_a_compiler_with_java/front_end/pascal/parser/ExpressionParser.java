@@ -1,5 +1,6 @@
 package wirte_a_compiler_with_java.front_end.pascal.parser;
 
+import wirte_a_compiler_with_java.front_end.inter.TokenType;
 import wirte_a_compiler_with_java.front_end.pascal.PascalParserTD;
 import wirte_a_compiler_with_java.front_end.pascal.tokens.PascalTokenType;
 import wirte_a_compiler_with_java.front_end.token.Token;
@@ -39,10 +40,21 @@ public class ExpressionParser extends StatementParser {
         REL_OPS_MAP.put(LESS_EQUALS, LE);
         REL_OPS_MAP.put(GREATER_THAN, GT);
         REL_OPS_MAP.put(GREATER_EQUALS, GE);
-    };
+    }
+
+    ;
 
     // TODO
-    private ICodeNode parseExpression(Token token){
+    private ICodeNode parseExpression(Token token) throws Exception {
+        // Parse a simple expression and make the root of its tree
+        // the root node.
+        ICodeNode rootNode = parseSimpleExpression(token);
+        token = currentToken();
+        TokenType tokenType = token.getType();
+        return null;
+    }
+
+    private ICodeNode parseSimpleExpression(Token token) {
         return null;
     }
 
