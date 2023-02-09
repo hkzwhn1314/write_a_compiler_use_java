@@ -159,6 +159,19 @@ public class ExpressionParser extends StatementParser {
 
     // factor
     private ICodeNode parseFactor(Token token) throws Exception {
+        TokenType tokenType = token.getType();
+        ICodeNode rootNode = null;
+        switch ((PascalTokenType) tokenType) {
+            // analysis all the kind of solutions
+            case IDENTIFIER:
+            case INTEGER:
+            case REAL:
+            case STRING:
+            case NOT:
+            case LEFT_PAREN:
+            default:
+
+        }
         return null;
     }
 
